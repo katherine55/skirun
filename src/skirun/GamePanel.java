@@ -16,6 +16,8 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
+	Skier ski = new Skier(400, 75, 50, 50);
+	
 	Timer timer;
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
@@ -26,6 +28,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer = new Timer(50 / 3, this);
 	}
 
+	
+	
 	ObjectManager manager = new ObjectManager();
 
 	void startGame() {
@@ -42,10 +46,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.manageEnemies();
 		manager.checkCollision();
 		
-		if(denny.isAlive == false){
+		if(ski.isAlive == false){
 			currentState = END_STATE;
 			manager.reset();
-			manager.addObject(denny);
+			manager.addObject(ski);
 			
 		}
 
@@ -62,7 +66,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+		g.fillRect(0, 0, Skirun.width, Skirun.height);
 		manager.draw(g);
 
 	}
@@ -118,13 +122,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 
-			denny.left = true;
+			ski.left = true;
 
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
-			denny.right = true;
+			ski.right = true;
 
 		}
 
@@ -135,10 +139,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		System.out.println("keyreleased");
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			denny.right = false;
+			ski.right = false;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			denny.left = false;
+			ski.left = false;
 		}
 
 	}

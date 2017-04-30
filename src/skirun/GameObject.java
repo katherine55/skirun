@@ -14,6 +14,9 @@ public class GameObject {
 	int y;
 	int width;
 	int height;
+	
+	Boolean isAlive = true;
+	
 	Rectangle collisionBox;
 	
 	public static BufferedImage crashedImg;
@@ -39,5 +42,13 @@ public class GameObject {
 
 	}
 	
+	void update() {
+		collisionBox.setBounds(x, y, width, height);
+
+	}
+
+	void draw(Graphics g) {
+
+	}
 	
 }
