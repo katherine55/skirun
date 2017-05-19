@@ -24,14 +24,20 @@ public class GameObject {
 
 	GameObject() throws IOException {
 
-		crashedImg = ImageIO.read(this.getClass().getResourceAsStream("crashed.png"));
-		hurdleImg = ImageIO.read(this.getClass().getResourceAsStream("hurdle.png"));
-		treeImg = ImageIO.read(this.getClass().getResourceAsStream("tree.png"));
 
 	}
 
 	GameObject(int x, int y, int height, int width) {
 
+		try {
+			crashedImg = ImageIO.read(this.getClass().getResourceAsStream("/crashed.png"));
+			hurdleImg = ImageIO.read(this.getClass().getResourceAsStream("/hurdle.png"));
+			treeImg = ImageIO.read(this.getClass().getResourceAsStream("/tree.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		this.x = x;
 		this.y = y;
 		this.height = height;
@@ -47,7 +53,9 @@ public class GameObject {
 	}
 
 	void draw(Graphics g) {
-
+		g.drawImage(crashedImg, x, y, width, height, null);
+		g.drawImage(hurdleImg, x, y, width, height, null);
+		g.drawImage(treeImg, x, y, width, height, null);
 	}
 
 }

@@ -14,12 +14,17 @@ public class Skier extends GameObject {
 	public static BufferedImage skierImg;
 
 	Skier() throws IOException {
-		skierImg = ImageIO.read(this.getClass().getResourceAsStream("skier.png"));
+
 	}
 
 	Skier(int x, int y, int width, int height) {
 		super(x, y, width, height);
-
+		try {
+			skierImg = ImageIO.read(this.getClass().getResourceAsStream("/skier.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		speed = 5;
 	}
 

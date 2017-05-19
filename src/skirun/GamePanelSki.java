@@ -1,6 +1,7 @@
 package skirun;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,13 +18,32 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
+	
+	Font titleFont;
+	Font enterFont;
+	Font l1Font;
+	Font l2Font;
+	Font l3Font;
+	Font overFont;
+	Font scoreFont;
+	Font restartFont;
 
 	ObjectManager manager = new ObjectManager();
-	Skier ski = new Skier(400, 75, 50, 50);
+	Skier ski = new Skier(400, 555, 90,90);
 
 	GamePanelSki() {
 		timer = new Timer(50 / 3, this);
 		manager.addObject(ski);
+		
+		titleFont = new Font("Arial", Font.PLAIN, 48);
+		enterFont = new Font("Arial", Font.PLAIN, 24);
+		l1Font = new Font("Arial", Font.PLAIN, 24);
+		l2Font = new Font("Arial", Font.PLAIN, 24);
+		l3Font = new Font("Arial", Font.PLAIN, 24);
+		
+		overFont = new Font("Arial", Font.PLAIN, 48);
+		scoreFont = new Font("Arial", Font.PLAIN, 24);
+		restartFont = new Font("Arial", Font.PLAIN, 24);
 	}
 
 	void startGame() {
@@ -53,20 +73,53 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	}
 
 	void drawMenuState(Graphics g) {
-		g.setColor(Color.BLUE);
+		g.setColor(Color.blue);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(titleFont);
+		g.drawString("Ski Run 3", 150, 200);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(enterFont);
+		g.drawString("press ENTER to start", 140, 275);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(l1Font);
+		g.drawString("instructions:", 190, 325);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(l2Font);
+		g.drawString("use ARROW keys to dodge obstacles", 50, 450);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(l3Font);
+		g.drawString("DON'T DIE", 192, 550);
 	}
 
 	void drawGameState(Graphics g) {
 
-		g.setColor(Color.BLACK);
+		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
+		manager.draw(g);
 
 	}
 
 	void drawEndState(Graphics g) {
-		g.setColor(Color.magenta);
+		g.setColor(Color.gray);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(overFont);
+		g.drawString("GAME OVER", 100, 200);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(scoreFont);
+		g.drawString("You went " + "" + " meters", 155, 250);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(restartFont);
+		g.drawString("press ENTER to restart", 125, 500);
 	}
 
 	public void paintComponent(Graphics g) {

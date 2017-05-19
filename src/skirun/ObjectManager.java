@@ -29,7 +29,7 @@ public class ObjectManager {
 		
 		purgeObjects();	
 	}
-
+//START HERE
 	public void draw(Graphics g) {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);

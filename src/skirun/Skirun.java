@@ -17,6 +17,7 @@ public class Skirun {
 		myFrame.setSize(width, height);
 		myFrame.add(myGamePanel);
 		myFrame.addKeyListener(myGamePanel);
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.setVisible(true);
 
 	}
