@@ -10,6 +10,7 @@ public class ObjectManager {
 	
 	private int score = 0;
 	
+	
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
 	
@@ -34,6 +35,7 @@ public class ObjectManager {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
 			o.draw(g);
+			
 		}
 	}
 
@@ -47,8 +49,9 @@ public class ObjectManager {
 
 	public void manageEnemies(){
 		if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-			addObject(new GameObject(new Random().nextInt(Skirun.width), 0, 50, 50));
+			addObject(new GameObject(new Random().nextInt(Skirun.width-100), 0, 100, 100));
 			enemyTimer = System.currentTimeMillis();
+			 
 		}
 	}
 
@@ -60,8 +63,8 @@ public class ObjectManager {
 				
 					if((o1 instanceof GameObject && o2 instanceof Skier) ||
 							(o2 instanceof GameObject && o1 instanceof Skier)){
-						o1.isAlive = false;
-						o2.isAlive = false;
+						//o1.isAlive = false;
+					//	o2.isAlive = false;
 					}
 	
 				}

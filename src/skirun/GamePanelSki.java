@@ -34,8 +34,8 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	GamePanelSki() {
 		timer = new Timer(50 / 3, this);
 		manager.addObject(ski);
-		
-		titleFont = new Font("Arial", Font.PLAIN, 48);
+		//manager.addObject(new GameObject(200, 200, 100, 100));
+		titleFont = new Font("Arial", Font.ITALIC, 48);
 		enterFont = new Font("Arial", Font.PLAIN, 24);
 		l1Font = new Font("Arial", Font.PLAIN, 24);
 		l2Font = new Font("Arial", Font.PLAIN, 24);
@@ -78,23 +78,23 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		
 		g.setColor(Color.WHITE);
 		g.setFont(titleFont);
-		g.drawString("Ski Run 3", 150, 200);
+		g.drawString("Ski Run 3", 150+250, 200); //+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(enterFont);
-		g.drawString("press ENTER to start", 140, 275);
+		g.drawString("press ENTER to start", 140+250, 275); //+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(l1Font);
-		g.drawString("instructions:", 190, 325);
+		g.drawString("instructions:", 190+250, 325);//+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(l2Font);
-		g.drawString("use ARROW keys to dodge obstacles", 50, 450);
+		g.drawString("use ARROW keys to dodge obstacles", 50+250, 450);//+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(l3Font);
-		g.drawString("DON'T DIE", 192, 550);
+		g.drawString("DON'T DIE", 192+250, 550);//+500
 	}
 
 	void drawGameState(Graphics g) {
@@ -111,15 +111,15 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		
 		g.setColor(Color.WHITE);
 		g.setFont(overFont);
-		g.drawString("GAME OVER", 100, 200);
+		g.drawString("GAME OVER", 100+250, 200);//+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(scoreFont);
-		g.drawString("You went " + "" + " meters", 155, 250);
+		g.drawString("You went " + "" + " meters", 155+250, 250);//+500
 		
 		g.setColor(Color.WHITE);
 		g.setFont(restartFont);
-		g.drawString("press ENTER to restart", 125, 500);
+		g.drawString("press ENTER to restart", 125+250, 500);//+500
 	}
 
 	public void paintComponent(Graphics g) {

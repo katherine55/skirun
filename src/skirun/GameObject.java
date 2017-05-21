@@ -49,13 +49,13 @@ public class GameObject {
 
 	void update() {
 		collisionBox.setBounds(x, y, width, height);
-
+		y+=2;
 	}
 
 	void draw(Graphics g) {
+		System.out.println("Ran");
 		g.drawImage(crashedImg, x, y, width, height, null);
-		g.drawImage(hurdleImg, x, y, width, height, null);
-		g.drawImage(treeImg, x, y, width, height, null);
+		
 	}
 
 }

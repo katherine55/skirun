@@ -13,10 +13,6 @@ public class Skier extends GameObject {
 	static boolean right;
 	public static BufferedImage skierImg;
 
-	Skier() throws IOException {
-
-	}
-
 	Skier(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		try {
@@ -31,8 +27,8 @@ public class Skier extends GameObject {
 	void update() {
 		super.update();
 
-		if (x >= 450) {
-			x = 450;
+		if (x >= 925) {
+			x = 925;
 		}
 		if (x <= 0) {
 			x = 0;

@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 public class Skirun {
 
 	JFrame myFrame = new JFrame();
-	static final int width = 500;
-	static final int height = 800;
+	static final int width = 1000; //+500
+	static final int height = 800; //same
 	GamePanelSki myGamePanel;
 
 	Skirun() {
