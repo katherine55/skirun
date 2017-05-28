@@ -49,7 +49,7 @@ public class ObjectManager {
 
 	public void manageEnemies(){
 		if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-			addObject(new GameObject(new Random().nextInt(Skirun.width-100), 0, 100, 100));
+			addObject(new Enemy(new Random().nextInt(Skirun.width-100), 0, 100, 100, new Random().nextInt(3)));
 			enemyTimer = System.currentTimeMillis();
 			 
 		}
