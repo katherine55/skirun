@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Enemy extends GameObject {
+public class Obstacle extends GameObject {
 
 	int speed;
 	static boolean left;
@@ -17,7 +17,7 @@ public class Enemy extends GameObject {
 	public static BufferedImage hurdleImg;
 	public static BufferedImage treeImg;
 
-	Enemy(int x, int y, int width, int height, int id) {
+	Obstacle(int x, int y, int width, int height, int id) {
 		super(x, y, width, height);
 		if (crashedImg == null) {
 			try {

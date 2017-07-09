@@ -50,4 +50,10 @@ public class Skier extends GameObject {
 
 	}
 
+	public void setLocation(int x, int y) {
+		this.x = x;
+		this.y = y;
+
+	}
+
 }

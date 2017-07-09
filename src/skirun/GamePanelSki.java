@@ -18,7 +18,9 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-	
+
+	int score;
+
 	Font titleFont;
 	Font enterFont;
 	Font l1Font;
@@ -29,18 +31,18 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	Font restartFont;
 
 	ObjectManager manager = new ObjectManager();
-	Skier ski = new Skier(400, 555, 90,90);
+	Skier ski = new Skier(400, 555, 90, 90);
 
 	GamePanelSki() {
 		timer = new Timer(50 / 3, this);
 		manager.addObject(ski);
-		//manager.addObject(new GameObject(200, 200, 100, 100));
+		// manager.addObject(new GameObject(200, 200, 100, 100));
 		titleFont = new Font("Arial", Font.ITALIC, 48);
 		enterFont = new Font("Arial", Font.PLAIN, 24);
 		l1Font = new Font("Arial", Font.PLAIN, 24);
 		l2Font = new Font("Arial", Font.PLAIN, 24);
 		l3Font = new Font("Arial", Font.PLAIN, 24);
-		
+
 		overFont = new Font("Arial", Font.PLAIN, 48);
 		scoreFont = new Font("Arial", Font.PLAIN, 24);
 		restartFont = new Font("Arial", Font.PLAIN, 24);
@@ -52,6 +54,7 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	}
 
 	void updateMenuState() {
+		score = 0;
 	}
 
 	void updateGameState() {
@@ -61,12 +64,15 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		manager.checkCollision();
 
 		if (ski.isAlive == false) {
-			// currentState = END_STATE;
+			currentState = END_STATE;
 			manager.reset();
 			manager.addObject(ski);
+			ski.isAlive = true;
+			ski.setLocation(400, 555);
 
 		}
 
+		score++;
 	}
 
 	void updateEndState() {
@@ -75,26 +81,26 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.blue);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
-		
+
 		g.setColor(Color.WHITE);
 		g.setFont(titleFont);
-		g.drawString("Ski Run 3", 150+250, 200); //+500
-		
+		g.drawString("Ski Run 3", 150 + 250, 200); // +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(enterFont);
-		g.drawString("press ENTER to start", 140+250, 275); //+500
-		
+		g.drawString("press ENTER to start", 140 + 250, 275); // +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(l1Font);
-		g.drawString("instructions:", 190+250, 325);//+500
-		
+		g.drawString("instructions:", 190 + 250, 325);// +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(l2Font);
-		g.drawString("use ARROW keys to dodge obstacles", 50+250, 450);//+500
-		
+		g.drawString("use ARROW keys to dodge obstacles", 50 + 250, 450);// +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(l3Font);
-		g.drawString("DON'T DIE", 192+250, 550);//+500
+		g.drawString("DON'T DIE", 192 + 250, 550);// +500
 	}
 
 	void drawGameState(Graphics g) {
@@ -102,24 +108,25 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
 		manager.draw(g);
+		drawScore(g);
 
 	}
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, Skirun.width, Skirun.height);
-		
+
 		g.setColor(Color.WHITE);
 		g.setFont(overFont);
-		g.drawString("GAME OVER", 100+250, 200);//+500
-		
+		g.drawString("GAME OVER", 100 + 250, 200);// +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(scoreFont);
-		g.drawString("You went " + "" + " meters", 155+250, 250);//+500
-		
+		g.drawString("You went " + score + " meters", 155 + 250, 250);// +500
+
 		g.setColor(Color.WHITE);
 		g.setFont(restartFont);
-		g.drawString("press ENTER to restart", 125+250, 500);//+500
+		g.drawString("press ENTER to restart", 125 + 250, 500);// +500
 	}
 
 	public void paintComponent(Graphics g) {
@@ -179,6 +186,14 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 			ski.right = true;
 
 		}
+
+	}
+
+	void drawScore(Graphics g) {
+
+		g.setColor(Color.BLACK);
+		g.setFont(scoreFont);
+		g.drawString("" + score, 50, 50);
 
 	}
 
