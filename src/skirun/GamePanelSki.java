@@ -34,7 +34,7 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 	Skier ski = new Skier(400, 555, 90, 90);
 
 	GamePanelSki() {
-		timer = new Timer(50 / 3, this);
+		timer = new Timer(1000 / 60, this);
 		manager.addObject(ski);
 		// manager.addObject(new GameObject(200, 200, 100, 100));
 		titleFont = new Font("Arial", Font.ITALIC, 48);
@@ -46,6 +46,8 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		overFont = new Font("Arial", Font.PLAIN, 48);
 		scoreFont = new Font("Arial", Font.PLAIN, 24);
 		restartFont = new Font("Arial", Font.PLAIN, 24);
+		
+		
 	}
 
 	void startGame() {
