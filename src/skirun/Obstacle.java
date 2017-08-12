@@ -53,27 +53,34 @@ public class Obstacle extends GameObject {
 
 	void draw(Graphics g) {
 		
+		//*****TREE GIF DO NOT REMOVE*****
+		if (id ==4){
 		if(counter%60==0){
 			spriteX++;
-			spriteX%=3;
+			
+			if(spriteX%3==0){
+				spriteX%=3;
+				spriteY++;
+				spriteY%=3;
+			}
 			
 			
 		}
 		
-		g.drawImage(treeGif.getSubimage(swidth*spriteX, sheight*spriteY, swidth, sheight), x, y, width, height, null);
+		g.drawImage(treeGif.getSubimage(swidth*spriteX, sheight*spriteY, swidth, sheight), x, y, width+55, height+55, null);}
 
-//		if (id == 0) {
-//			
-//			g.drawImage(crashedImg, x, y, width, height, null);
-//		}
-//
-//		else if (id == 1) {
-//			g.drawImage(hurdleImg, x, y, width, height, null);
-//		}
-//
-//		else if (id == 2) {
-//			g.drawImage(treeImg, x, y, width, height, null);
-//		}
+		if (id == 0) {
+			
+			g.drawImage(crashedImg, x, y, width, height, null);
+		}
+
+		else if (id == 1) {
+			g.drawImage(hurdleImg, x, y, width, height, null);
+		}
+
+		else if (id == 2) {
+			g.drawImage(treeImg, x, y, width, height, null);
+		}
 
 	}
 

@@ -9,8 +9,11 @@ public class ObjectManager {
 
 	private int score = 0;
 
+	int randX = new Random().nextInt(Skirun.width / 2);
+
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
+	int treeSpawnTime = 300;
 
 	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
@@ -47,9 +50,37 @@ public class ObjectManager {
 	}
 
 	public void manageEnemies() {
+
+		// int x1 = randX;
+		// int x2 = randX + 400;
+		int randChange = new Random().nextInt(100) - 50;
+
 		if (System.currentTimeMillis() - enemyTimer >= enemySpawnTime) {
 			addObject(new Obstacle(new Random().nextInt(Skirun.width - 100), 0, 100, 100, new Random().nextInt(3)));
 			enemyTimer = System.currentTimeMillis();
+
+		}
+		if (System.currentTimeMillis() < 200) {
+			addObject(new Obstacle(randX, 0, 100, 100, 4));
+			addObject(new Obstacle(randX + 400, 0, 100, 100, 4));
+			enemyTimer = System.currentTimeMillis();
+
+		}
+		if (System.currentTimeMillis() - enemyTimer >= treeSpawnTime) {
+
+			addObject(new Obstacle(randX, 0, 100, 100, 4));
+			addObject(new Obstacle(randX + 400, 0, 100, 100, 4));
+			randX += randChange;
+
+			enemyTimer = System.currentTimeMillis();
+			
+			if(randX<50){
+				randX+=10;
+			}
+			
+			if(randX>950){
+				randX-=10;
+			}
 
 		}
 	}
@@ -61,14 +92,14 @@ public class ObjectManager {
 				GameObject o2 = objects.get(j);
 
 				if (o1.collisionBox.intersects(o2.collisionBox)) {
-					if ((o1 instanceof GameObject && o2 instanceof Skier) ||
-							(o2 instanceof GameObject && o1 instanceof Skier)) {
+					if ((o1 instanceof GameObject && o2 instanceof Skier)
+							|| (o2 instanceof GameObject && o1 instanceof Skier)) {
 						score++;
 						System.out.println(score);
 						o1.isAlive = false;
 						o2.isAlive = false;
-					} else if ((o1 instanceof GameObject && o2 instanceof Skier) ||
-							(o2 instanceof GameObject && o1 instanceof Skier)) {
+					} else if ((o1 instanceof GameObject && o2 instanceof Skier)
+							|| (o2 instanceof GameObject && o1 instanceof Skier)) {
 						o1.isAlive = false;
 						o2.isAlive = false;
 					}
