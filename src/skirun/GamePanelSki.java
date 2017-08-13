@@ -107,8 +107,8 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 
 	void drawGameState(Graphics g) {
 
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, Skirun.width, Skirun.height);
+//		g.setColor(Color.WHITE);
+//		g.fillRect(0, 0, Skirun.width, Skirun.height);
 		manager.draw(g);
 		drawScore(g);
 

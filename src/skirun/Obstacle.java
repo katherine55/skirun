@@ -24,6 +24,7 @@ public class Obstacle extends GameObject {
 	public static BufferedImage treeGif;
 
 	Obstacle(int x, int y, int width, int height, int id) {
+
 		super(x, y, width, height);
 		if (crashedImg == null) {
 			try {
@@ -70,15 +71,17 @@ public class Obstacle extends GameObject {
 		g.drawImage(treeGif.getSubimage(swidth*spriteX, sheight*spriteY, swidth, sheight), x, y, width+55, height+55, null);}
 
 		if (id == 0) {
-			
+			System.out.println("crashed0");
 			g.drawImage(crashedImg, x, y, width, height, null);
 		}
 
 		else if (id == 1) {
+			System.out.println("hurdle1");
 			g.drawImage(hurdleImg, x, y, width, height, null);
 		}
 
 		else if (id == 2) {
+			System.out.println("tree2");
 			g.drawImage(treeImg, x, y, width, height, null);
 		}
 

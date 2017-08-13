@@ -12,7 +12,8 @@ public class ObjectManager {
 	int randX = new Random().nextInt(Skirun.width / 2);
 
 	long enemyTimer = 0;
-	int enemySpawnTime = 1000;
+	long treeTimer = 0;
+	int enemySpawnTime = 500;
 	int treeSpawnTime = 300;
 
 	public ObjectManager() {
@@ -51,39 +52,41 @@ public class ObjectManager {
 
 	public void manageEnemies() {
 
-		// int x1 = randX;
-		// int x2 = randX + 400;
 		int randChange = new Random().nextInt(100) - 50;
 
-		if (System.currentTimeMillis() - enemyTimer >= enemySpawnTime) {
+		long timer = System.currentTimeMillis();
+		
+		if (timer - enemyTimer >= enemySpawnTime) {
+
 			addObject(new Obstacle(new Random().nextInt(Skirun.width - 100), 0, 100, 100, new Random().nextInt(3)));
 			enemyTimer = System.currentTimeMillis();
 
 		}
-		if (System.currentTimeMillis() < 200) {
+		if (timer < 1) {
 			addObject(new Obstacle(randX, 0, 100, 100, 4));
 			addObject(new Obstacle(randX + 400, 0, 100, 100, 4));
-			enemyTimer = System.currentTimeMillis();
+			enemyTimer = System.currentTimeMillis();}
 
-		}
-		if (System.currentTimeMillis() - enemyTimer >= treeSpawnTime) {
+		
+		if (timer - treeTimer >= treeSpawnTime) {
+
 
 			addObject(new Obstacle(randX, 0, 100, 100, 4));
 			addObject(new Obstacle(randX + 400, 0, 100, 100, 4));
 			randX += randChange;
 
-			enemyTimer = System.currentTimeMillis();
-			
-			if(randX<50){
-				randX+=10;
+			treeTimer = System.currentTimeMillis();
+
+			if (randX < 50) {
+				randX += 10;
 			}
-			
-			if(randX>950){
-				randX-=10;
+
+			if (randX > 950) {
+				randX -= 10;
 			}
 
 		}
-	}
+}
 
 	public void checkCollision() {
 		for (int i = 0; i < objects.size(); i++) {
