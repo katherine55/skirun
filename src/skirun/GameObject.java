@@ -1,11 +1,8 @@
 package skirun;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class GameObject {
 
@@ -31,6 +28,7 @@ public class GameObject {
 
 	void update() {
 		collisionBox.setBounds(x, y, width, height);
+		System.out.println("hi");
 		if (y > Skirun.height) {
 
 			isAlive = false;
@@ -40,6 +38,8 @@ public class GameObject {
 	}
 
 	void draw(Graphics g) {
+		g.setColor(Color.black);
+		g.drawRect(x, y, width, height);
 		System.out.println("Ran");
 		// g.drawImage(crashedImg, x, y, width, height, null);
 

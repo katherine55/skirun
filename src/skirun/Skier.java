@@ -22,10 +22,13 @@ public class Skier extends GameObject {
 			e.printStackTrace();
 		}
 		speed = 5;
+
 	}
 
 	void update() {
+
 		super.update();
+		collisionBox.setBounds(x + 15, y + 30, width - 30, height - 30);
 
 		if (x >= 925) {
 			x = 925;
@@ -45,7 +48,7 @@ public class Skier extends GameObject {
 	}
 
 	void draw(Graphics g) {
-
+		super.draw(g);
 		g.drawImage(skierImg, x, y, width, height, null);
 
 	}
