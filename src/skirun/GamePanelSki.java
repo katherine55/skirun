@@ -97,6 +97,10 @@ public class GamePanelSki extends JPanel implements ActionListener, KeyListener 
 		g.drawString("instructions:", 190 + 250, 325);// +500
 
 		g.setColor(Color.WHITE);
+		g.setFont(l1Font);
+		g.drawString("Don't get too close to the obstacles!", 310, 400);
+		
+		g.setColor(Color.WHITE);
 		g.setFont(l2Font);
 		g.drawString("use ARROW keys to dodge obstacles", 50 + 250, 450);// +500
 

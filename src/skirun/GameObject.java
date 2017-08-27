@@ -38,8 +38,8 @@ public class GameObject {
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.black);
-		g.drawRect(x, y, width, height);
+		//g.setColor(Color.black);
+		//g.drawRect(x, y, width, height);
 		System.out.println("Ran");
 		// g.drawImage(crashedImg, x, y, width, height, null);
 

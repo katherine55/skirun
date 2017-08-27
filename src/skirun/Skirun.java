@@ -1,5 +1,7 @@
 package skirun;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 public class Skirun {
@@ -13,6 +15,7 @@ public class Skirun {
 
 		myGamePanel = new GamePanelSki();
 		myGamePanel.startGame();
+		myGamePanel.setBackground(Color.WHITE);
 		myFrame = new JFrame("Ski Run");
 		myFrame.setSize(width, height);
 		myFrame.add(myGamePanel);
