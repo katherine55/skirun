@@ -68,7 +68,8 @@ public class Obstacle extends GameObject {
 
 			}
 
-			g.drawImage(treeGif.getSubimage(swidth * spriteX, sheight * spriteY, swidth, sheight), x - swidth,
+			g.drawImage(treeGif.getSubimage(swidth * spriteX, 
+					sheight * spriteY, swidth, sheight), x - swidth,
 					y - sheight, width + 55, height + 55, null);
 		}
 

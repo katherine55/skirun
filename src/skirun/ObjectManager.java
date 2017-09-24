@@ -58,7 +58,8 @@ public class ObjectManager {
 
 		if (timer - enemyTimer >= enemySpawnTime) {
 
-			addObject(new Obstacle(new Random().nextInt(Skirun.width - 100), 0, 100, 100, new Random().nextInt(3)));
+			addObject(new Obstacle(new Random().nextInt(Skirun.width - 100), 
+					0, 100, 100, new Random().nextInt(3)));
 			enemyTimer = System.currentTimeMillis();
 
 		}
